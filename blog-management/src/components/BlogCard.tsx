@@ -1,23 +1,21 @@
-export interface BlogCard {
-    title: string;
-    description: string;
-    icon: string;
-    component: React.ComponentType<any>;
-    category: string;
-    type: string;
-    demo: boolean;
-    demoCode: string;
-  }
-  
-  export const blogCard: BlogCard = {
-    title: 'Blog Card',
-    description: 'A simple blog card component',
-    icon: 'blog',
-    component: BlogCardComponent,
-    category: 'blog',
-    type: 'component',
-    demo: true,
-    demoCode: `
-      <BlogCardComponent />
-    `,
-  };
+import React from 'react';
+
+interface BlogCardProps {
+  title: string;
+  description: string;
+  category: string;
+  onDelete: () => void;
+}
+
+const BlogCard: React.FC<BlogCardProps> = ({ title, description, category, onDelete }) => {
+  return (
+    <div className="border p-4 rounded-lg">
+      <h2 className="font-bold">{title}</h2>
+      <p>{description}</p>
+      <p className="text-gray-500">{category}</p>
+      <button onClick={onDelete} className="text-red-500">Delete</button>
+    </div>
+  );
+};
+
+export default BlogCard;

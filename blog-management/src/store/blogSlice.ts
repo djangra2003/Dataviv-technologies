@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface Blog {
-  id: string;
+  id: number;
   title: string;
   description: string;
   category: string;
-  tags?: string[];
-  coverImage?: File | null;
-  publishedStatus: 'draft' | 'published';
-  publishedDate?: string | null;
+  tags: string[];
+  coverImage: string;
+  publishedStatus: string;
+  publishedDate?: string;
 }
 
 interface BlogState {
@@ -26,8 +26,8 @@ const blogSlice = createSlice({
     addBlog: (state, action: PayloadAction<Blog>) => {
       state.blogs.push(action.payload);
     },
-    deleteBlog: (state, action: PayloadAction<string>) => {
-      state.blogs = state.blogs.filter((blog) => blog.id !== action.payload);
+    deleteBlog: (state, action: PayloadAction<number>) => {
+      state.blogs = state.blogs.filter(blog => blog.id !== action.payload);
     },
   },
 });
