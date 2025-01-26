@@ -1,3 +1,4 @@
+// pages/index.tsx
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
@@ -14,12 +15,14 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Blog Management</h1>
+    <div className="container mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-6">Blog Management</h1>
       <Link href="/create">
-        <button className="bg-green-500 text-white px-4 py-2 rounded">Create New Post</button>
+        <button className="bg-green-500 text-white px-4 py-2 rounded shadow hover:bg-green-600 transition">
+          Create New Post
+        </button>
       </Link>
-      <div className="mt-4 grid grid-cols-1 gap-4">
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {blogs.map(blog => (
           <BlogCard key={blog.id} blog={blog} onDelete={handleDelete} />
         ))}
