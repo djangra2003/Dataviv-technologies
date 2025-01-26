@@ -82,9 +82,10 @@ const CreateBlog: React.FC = () => {
           options={[
             { value: 'Draft', label: 'Draft' },
             { value: 'Published', label: 'Published' },
+            
           ]}
           selectedValue={publishedStatus}
-          onChange={(value: 'Draft' | 'Published') => setPublishedStatus(value)} 
+          onChange={(value: 'Draft' | 'Published') => setPublishedStatus(value)}
         />
         {publishedStatus === 'Published' && (
           <FormInput
