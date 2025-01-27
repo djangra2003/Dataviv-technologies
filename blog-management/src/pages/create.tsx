@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addBlog } from '../store/blogSlice';
-import FormInput from '../components/FormInput';
-import FormSelect from '../components/FormSelect';
-import FormRadio from '../components/FormRadio';
-import { v4 as uuidv4 } from 'uuid';
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import FormInput from '../components/FormInput';
+import FormRadio from '../components/FormRadio';
+import FormSelect from '../components/FormSelect';
+import { addBlog } from '../store/blogSlice';
 
 const CreateBlog: React.FC = () => {
   const dispatch = useDispatch();
@@ -68,7 +68,7 @@ const CreateBlog: React.FC = () => {
         <FormInput
           label="Tags (comma separated)"
           type="text"
-          value={tags .join(', ')}
+          value={tags.join(', ')}
           onChange={(e) => setTags(e.target.value.split(',').map(tag => tag.trim()))}
         />
         <input
@@ -85,7 +85,7 @@ const CreateBlog: React.FC = () => {
             
           ]}
           selectedValue={publishedStatus}
-          onChange={(value: 'Draft' | 'Published') => setPublishedStatus(value)}
+          onChange={(value: string) => setPublishedStatus(value as 'Draft' | 'Published')}
         />
         {publishedStatus === 'Published' && (
           <FormInput
